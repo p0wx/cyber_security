@@ -1,7 +1,6 @@
 
 import re
 import pandas as pd
-import numpy as np
 import time
 
 
@@ -62,6 +61,39 @@ print(bigrams.sort_values('code_text', ascending=False).head().to_string(index=F
 
 
 print("\n\n\n--- %s seconds ---" % (time.time() - start_time))
+
+
+
+# write code text
+
+with open('code_war_peace_clean.txt', 'w', encoding='utf-8') as f:
+	f.write(code(text))	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
