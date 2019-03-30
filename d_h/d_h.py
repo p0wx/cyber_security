@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 import random
 
 
@@ -31,33 +38,55 @@ def MillerRabin(n, s = 50):
                         return True # Составное
                     return False # Простое
 
+def find_root(gen):
+    some = []
+
+    for g in range(2, gen-1):
+        for i in range(gen):
+            some.append(g**i % gen)
+
+    if len(some) == len(range(gen-1)):
+        return g
+    return None
+
+
+
+
 class People(object):
-	def __init__(self, s_key, name):
-		self.s_key = s_key
-		self.temp = None
-		self.s_key2 = None
-		self.name = name
+    def __init__(self, s_key, name):
+        self.s_key = s_key
+        self.temp = None
+        self.s_key2 = None
+        self.name = name
 
 
-	def write(self, num):
-		with open('dialog.txt', 'w', encoding='utf-8') as f:
-			print('{} send {}'.format(self.name, num))
-			f.write(str(num))
+    def write(self, num):
+        with open('dialog.txt', 'w', encoding='utf-8') as f:
+            print('{} send {}'.format(self.name, num))
+            f.write(str(num))
 
 
-	def read(self):
-		with open('dialog.txt', 'r', encoding='utf-8') as f:
-			self.temp = int(f.read())
-			print('{} read {}'.format(self.name, self.temp))
+    def read(self):
+        with open('dialog.txt', 'r', encoding='utf-8') as f:
+            self.temp = int(f.read())
+            print('{} read {}'.format(self.name, self.temp))
 
-	def find_key(self):
-		self.s_key2 = self.temp**self.s_key%p_key
-		print(self.s_key2)
+    def find_key(self):
+        self.s_key2 = self.temp**self.s_key%p_key
+        print(self.s_key2)
 
 p_key = 20
-gen = generate_big_prime(100)
+gen = generate_big_prime(17)
 
-print(gen)
+print('prime number = ', gen)
+
+#if find_root:
+#    print('root was found')
+
+#else:
+#    print('root was not found')
+gen = find_root(gen)
+print('root = ', gen)
 
 
 Alice = People(7, 'Alice')
@@ -72,4 +101,6 @@ Alice.read()
 
 Alice.find_key()
 Bob.find_key()
+    
+
 	
